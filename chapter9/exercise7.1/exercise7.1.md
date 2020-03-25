@@ -11,7 +11,7 @@
 6. proc (x) (x x)
 > ((t -> t) -> t)
 7. proc (x) proc (y) if x then 88 else 99
-> (bool -> ())
+> (bool -> (t -> int))
 8. proc (x) proc (y) if x then y else 99
 > no-type
 9. (proc (p) if p then 88 else 99
