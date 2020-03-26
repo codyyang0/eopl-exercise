@@ -1,0 +1,1 @@
+Exercise 5.4 [*] Add let3 to this interpreter. A let3 expression is like a let expression, except that it defines exactly three variables.

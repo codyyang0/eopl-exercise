@@ -22,6 +22,9 @@
     '((program (expression) a-program)
 
       (expression (number) const-exp)
+      
+      (expression (identifier) var-exp)
+      
       (expression
         ("-" "(" expression "," expression ")")
         diff-exp)
@@ -33,9 +36,7 @@
       (expression
        ("if" expression "then" expression "else" expression)
        if-exp)
-
-      (expression (identifier) var-exp)
-
+      
       (expression
        ("let" identifier "=" expression "in" expression)
        let-exp)
@@ -54,13 +55,10 @@
            "in" expression)
         letrec-exp)
 
-      ;; Exercise 5.3
       (expression
-       ("let2"
-        identifier "=" expression ","
-        identifier "=" expression "in" expression)
+       ("let2" identifier "=" expression ","
+               identifier "=" expression "in" expression)
        let2-exp)
-      
       ))
 
   ;;;;;;;;;;;;;;;; sllgen boilerplate ;;;;;;;;;;;;;;;;

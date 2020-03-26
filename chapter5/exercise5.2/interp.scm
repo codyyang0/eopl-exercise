@@ -63,6 +63,11 @@
           (value-of/k letrec-body
             (extend-env-rec p-name b-var p-body env)
             cont))
+
+        ;; Exercise 5.3
+        (let2-exp (var1 exp1 var2 exp2 body)
+          (value-of/k exp1 env
+            (let2-exp-cont1 var1 var2 exp2 body env cont)))
    )))
 
   ;; apply-cont : Cont * ExpVal -> FinalAnswer
