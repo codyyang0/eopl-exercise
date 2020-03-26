@@ -40,6 +40,9 @@
       (expression
        ("let" (arbno identifier "=" expression) "in" expression)
        let-exp)
+;      (expression
+;       ("let" identifier "=" expression "in" expression)
+;       let-exp)
 
       (expression
        ("proc" "(" identifier ")" expression)

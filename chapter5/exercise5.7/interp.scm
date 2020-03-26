@@ -49,8 +49,11 @@
             (if-test-cont exp2 exp3 env cont)))
         
         (let-exp (vars exps body)
-          (value-of/k exp1 env
-            (let-exp-cont var body env cont)))
+          (value-of/k (car exps) env
+            (let-exp-cont-first vars (cdr exps) body env cont)))
+        
+;        (let-exp (var exp body)
+;          (value-of/k exp env (let-exp-cont var body env cont)))
         
         (proc-exp (var body)
           (apply-cont cont 
@@ -135,6 +138,29 @@
     (lambda (rator cont)
       (lambda (val)
         (apply-procedure/k (expval->proc rator) val cont))))
+
+  ; let-exp-cont-first : Vars * Exps * Exp * Env -> Cont
+  (define let-exp-cont-first
+    (lambda (vars exps body env cont)
+      (lambda (val)
+        (apply-cont
+         (let-exp-cont-rest '() '() vars exps body env cont) val))))
+
+  ; let-exp-cont-rest : Vars * ExpVals * Vars * Exps * Exp * Env * Cont -> Cont
+  (define let-exp-cont-rest
+    (lambda (vars vals rest-vars rest-exps body env cont)
+      (lambda (val)
+        (if (null? rest-exps)
+            (value-of/k body (extend-env* (cons (car rest-vars) vars) (cons val vals) env) cont)
+            (value-of/k (car rest-exps) env
+                        (let-exp-cont-rest (cons (car rest-vars) vars)
+                                           (cons val vals)
+                                           (cdr rest-vars)
+                                           (cdr rest-exps)
+                                           body
+                                           env
+                                           cont))))))
+             
   )
   
 

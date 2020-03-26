@@ -93,6 +93,8 @@ in let times4 = (fix t4m)
 "letrec even(odd)  = proc(x) if zero?(x) then 1 else (odd -(x,1))
    in letrec  odd(x)  = if zero?(x) then 0 else ((even odd) -(x,1))
    in (odd 13)" 1)
-      
+
+      (let-mul-test-1 "let x = 1 y = 3 in -(y, x)" 2)
+      (let-mul-test-2 "let x = 1 y = 3 z = 5 in -(z, -(y, x))" 3)
       ))
   )

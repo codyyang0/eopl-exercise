@@ -35,10 +35,11 @@
         (empty-env ()
           (eopl:error 'apply-env "No binding for ~s" search-sym))
         (extend-env* (vars vals saved-env)
-          (let ((index (index-of search-sym vars)))
-            (if (eqv? (index-of search-sym vars) -1)
-                (apply-env search-sym env)
-                (list-ref vals index))))
+          (let ((find (memq search-sym vars)))
+            (if (list? find)
+                (let ((index (index-of search-sym vars)))
+                  (list-ref vals index))
+                (apply-env saved-env search-sym))))
         (extend-env (var val saved-env)
 	  (if (eqv? search-sym var)
 	    val
@@ -51,7 +52,7 @@
   ; index-of : identifier * listof(sym) -> int
   (define index-of
     (lambda (search-sym vars)
-      (cond ((null? vars) 0)
-            ((eqv? search-sym (car vars)) 0)
-            (else (+ 1 (index-of search-sym (cdr vars)))))))
+      (if (eqv? search-sym (car vars))
+          0
+          (+ 1 (index-of search-sym (cdr vars))))))
   )
