@@ -1,0 +1,1 @@
+Exercise 5.2 [*] Implement this data type of continuations using a data-structure representation.
