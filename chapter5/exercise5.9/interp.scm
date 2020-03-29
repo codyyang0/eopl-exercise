@@ -149,7 +149,7 @@
           (setref!
            (apply-env env var)
            val)
-          (num-val 27)))))
+          (apply-cont cont (num-val 27))))))
 
   )
   
