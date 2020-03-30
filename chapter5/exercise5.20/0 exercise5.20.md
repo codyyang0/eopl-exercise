@@ -1,0 +1,2 @@
+Exercise 5.20 [*] In exercise 5.19, the last bounce before trampoline returns a FinalAnswer is always something like (apply-cont (end-cont) val), where val is some ExpVal. Optimize your representation of bounces in exercise 5.19 to take
+advantage of this fact.
