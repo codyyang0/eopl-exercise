@@ -1,0 +1,1 @@
+("7.4" racket ("fa32ef9a2f919557ff1f41374ae7ab7742afba79" . "a3650c475b791d94bee4aab5d45e3baceec4bb2c") (collects #"errortrace" #"errortrace-key.rkt") (collects #"mzlib" #"pretty.rkt") (collects #"mzlib" #"trace.rkt") (collects #"mzscheme" #"main.rkt"))
