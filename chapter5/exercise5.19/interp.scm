@@ -124,8 +124,9 @@
     (lambda (proc1 arg cont)
       (cases proc proc1
         (procedure (var body saved-env)
+          (value-of/k body (extend-env var arg saved-env) cont)))))
 ;          (proc-bounce var arg body saved-env cont)))))
-         (lambda () (value-of/k body (extend-env var arg saved-env) cont))))))
+;         (lambda () (value-of/k body (extend-env var arg saved-env) cont))))))
   )
   
 

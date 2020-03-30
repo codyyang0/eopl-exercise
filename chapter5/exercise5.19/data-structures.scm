@@ -127,7 +127,7 @@
 
   ;;;;;;;;;;;; bounce structures ;;;;;;;;;;;;;;;;;;;;;;
 ;  (define-datatype bounce bounce?
-;    (account-bounce
+;    (count-bounce
 ;     (account-cont proc?))
 ;    (proc-bounce
 ;     (var identifier?)
