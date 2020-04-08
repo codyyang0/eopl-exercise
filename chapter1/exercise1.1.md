@@ -1,13 +1,13 @@
-1. {3n + 2 | n ∈ N}
-   Top-down:
-   1.n = 2 or
-   2.n - 3  ∈ S
-   Bottom-up:
-   1. 2 ∈ S, or
-   2. if n ∈ S, then n + 3 ∈ S
-   rules of inference:
-   2 ∈ S
+1. {3n + 2 | n ∈ N} </br>
+   Top-down: </br>
+   1.n = 2 or </br>
+   2.n - 3  ∈ S </br></br>
+   Bottom-up: </br>
+   1. 2 ∈ S, or </br>
+   2. if n ∈ S, then n + 3 ∈ S </br></br>
+   rules of inference:</br>
+   2 ∈ S </br></br>
    
-   n ∈ S
-   -----
-   n + 3 ∈ S
+   n ∈ S </br>
+   "-----" </br>
+   n + 3 ∈ S </br>
