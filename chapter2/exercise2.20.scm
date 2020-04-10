@@ -14,7 +14,7 @@
   (lambda (n l-node r-node)
     (list n l-node r-node)))
 
-; empty-node : () -> node
+; empty-node
 (define empty-node '())
 
 ; current-node-val : node -> Int
@@ -99,7 +99,7 @@
             (r-node (move-to-right-node cur-node)))
         (let ((new-l-node (node (current-node-val nod) l-node empty-node)))
           (let ((new-node (node val new-l-node r-node)))
-            (list new-node pars)))))))
+            (bintree new-node pars)))))))
 
 ; insert-to-right : node * Bintree -> Bintree
 (define insert-to-right
@@ -111,7 +111,7 @@
             (r-node (move-to-right-node cur-node)))
         (let ((new-r-node (node (current-node-val nod) empty-node r-node)))
           (let ((new-node (node val l-node new-r-node)))
-            (list new-node pars)))))))
+            (bintree new-node pars)))))))
 
 ; move-up : Bintree -> Bintree
 (define move-up
