@@ -74,7 +74,7 @@
               (pars (parents bt)))
           (let ((new-cur-node (move-to-left-node cur-node))
                 (new-pars (cons cur-node pars)))
-            (list new-cur-node new-pars))))))
+            (bintree new-cur-node new-pars))))))
 
 ; move-to-right : Bintree -> Bintree
 (define move-to-right
@@ -85,7 +85,7 @@
               (pars (parents bt)))
           (let ((new-cur-node (move-to-right-node cur-node))
                 (new-pars (cons cur-node pars)))
-            (list new-cur-node new-pars))))))
+            (bintree new-cur-node new-pars))))))
 
 ; at-leaf? : Bintree -> Bool
 (define at-leaf?
