@@ -5,7 +5,7 @@
 
   (require "data-structures.scm")
 
-  (provide init-env empty-env extend-env extend-env* apply-env)
+  (provide init-env empty-env extend-env apply-env has-binding?)
 
 ;;;;;;;;;;;;;;;; initial environment ;;;;;;;;;;;;;;;;
   
@@ -37,26 +37,30 @@
 
   (define extend-env
     (lambda (sym val old-env)
+      ; very exciting
       (extended-env-record sym val old-env)))
-
-  (define extend-env*
-    (lambda (syms vals old-env)
-      (if (null? syms)
-          old-env
-          (extend-env* (cdr syms) (cdr vals)
-                       (extend-env (car syms) (car vals) old-env)))))
 
   (define apply-env
     (lambda (env search-sym)
       (if (empty-env? env)
-	;(eopl:error 'apply-env "No binding for ~s" search-sym)
-        ; exercise 3.22, if not found search, return #f
-        #f
+	(eopl:error 'apply-env "No binding for ~s" search-sym)
 	(let ((sym (extended-env-record->sym env))
 	      (val (extended-env-record->val env))
 	      (old-env (extended-env-record->old-env env)))
 	  (if (eqv? search-sym sym)
 	    val
 	    (apply-env old-env search-sym))))))
+
+  ; has-bind? : env * var -> boolean
+  (define has-binding?
+    (lambda (env search-sym)
+      (if (empty-env-record? env)
+          #f
+          (let ((sym (extended-env-record->sym env))
+                (val (extended-env-record->val env))
+                (old-env (extended-env-record->old-env env)))
+            (if (eqv? search-sym sym)
+                #t
+                (has-binding? old-env search-sym))))))
 
   )

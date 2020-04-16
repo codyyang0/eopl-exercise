@@ -11,9 +11,8 @@
   (define the-lexical-spec
     '((whitespace (whitespace) skip)
       (comment ("%" (arbno (not #\newline))) skip)
-      ; build-in operation, var-identifier
       (identifier
-       ((or letter "+" "-" "*" "/") (arbno (or letter digit "_" "-" "?")))
+       (letter (arbno (or letter digit "_" "-" "?")))
        symbol)
       (number (digit (arbno digit)) number)
       (number ("-" digit (arbno digit)) number)
@@ -23,12 +22,9 @@
     '((program (expression) a-program)
 
       (expression (number) const-exp)
-
-      ; Exercise 3.22 [***] The concrete syntax of this section uses different
-      ; syntax for a built-in operation, such as difference, from a procedure call.
       (expression
-        ("(" identifier (arbno expression) ")")
-        binary-exp)
+        ("-" "(" expression "," expression ")")
+        diff-exp)
       
       (expression
        ("zero?" "(" expression ")")
@@ -45,12 +41,12 @@
        let-exp)   
 
       (expression
-       ("proc" "(" (separated-list identifier ",") ")" expression)
+       ("proc" "(" identifier ")" expression)
        proc-exp)
 
-;      (expression
-;       ("(" expression (arbno expression) ")")
-;       call-exp)
+      (expression
+       ("(" expression expression ")")
+       call-exp)
       
       ))
 
