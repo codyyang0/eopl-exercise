@@ -1,1 +1,0 @@
-("7.4" racket ("c0b4cf6c81b9f5c1e105d3eb0b208cc49dfd4c77" . "c2e41cd0e25c3bdf690e2045bf24304edd092cfd") #"/Users/cody/projects/eopl-exercise/chapter3/exercise3.26/proc-rep/data-structures.scm" (collects #"eopl" #"eopl.rkt") (collects #"errortrace" #"errortrace-key.rkt"))
