@@ -41,12 +41,6 @@
         ;              = (deref (apply-env \r \x{}))}
         (var-exp (var) (deref (apply-env env var)))
 
-        (ref-exp (var) (apply-env env var))
-
-        (deref-exp (var) (value-of (var-exp var) env))
-        
-        (setref-exp (var exp1) (value-of (assign-exp var exp1) env))
-
         ;\commentbox{\diffspec}
         (diff-exp (exp1 exp2)
           (let ((val1 (value-of exp1 env))
@@ -105,6 +99,18 @@
               (apply-env env var)
               (value-of exp1 env))
             (num-val 27)))
+
+        (ref-exp (var)
+          (ref-val (apply-env env var)))
+
+        (deref-exp (exp1)
+          (let [[ref (expval->ref (value-of exp1 env))]]
+            (deref ref)))
+
+        (setref-exp (exp1 exp2)
+          (let [[ref (expval->ref (value-of exp1 env))]
+                [val (value-of exp2 env)]]
+            (setref! ref val)))
 
         )))
 

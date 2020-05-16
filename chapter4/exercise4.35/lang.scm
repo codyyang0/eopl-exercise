@@ -37,20 +37,6 @@
       (expression (identifier) var-exp)
 
       (expression
-       ("ref" identifier)
-       ref-exp)
-
-      ; same as var-exp
-      (expression
-       ("deref" "(" identifier ")")
-       deref-exp)
-
-      ; same as set-exp
-      (expression
-       ("setref" "(" identifier "," expression ")")
-       setref-exp)
-
-      (expression
        ("let" identifier "=" expression "in" expression)
        let-exp)   
 
@@ -77,6 +63,18 @@
       (expression
         ("set" identifier "=" expression)
         assign-exp)
+
+      (expression
+       ("ref" identifier)
+       ref-exp)
+
+      (expression
+       ("deref" "(" expression ")")
+       deref-exp)
+
+      (expression
+       ("setref" "(" expression "," expression ")")
+       setref-exp)
 
       ))
 
