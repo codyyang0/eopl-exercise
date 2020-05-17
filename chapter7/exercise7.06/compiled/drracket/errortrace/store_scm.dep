@@ -1,0 +1,1 @@
+("7.7" racket ("36f52090fca5a66d6b6fd8a01cf42d6b7d7b3830" . "90d08fff3888b4b6c1096835958a6e7e8de93098") #"/Users/cody/projects/eopl-exercise/chapter7/exercise7.06/drscheme-init.scm" (collects #"eopl" #"eopl.rkt") (collects #"errortrace" #"errortrace-key.rkt"))
