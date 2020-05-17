@@ -1,0 +1,36 @@
+1. proc (x) -(x, 3) : int -> int
+2. proc (f) proc (x) -((f x), 1) : ((t->int) -> (t->int))
+3. proc (x) x : t -> t
+4. proc (x) proc (y) (x y) : ((t -> t) -> (t -> t))
+5. proc (x) (x 3) : ((int -> t) -> t)
+6. proc (x) (x x) : ((t->t) -> t)
+7. proc (x) if x then 88 else 99 : (bool -> int)
+8. proc (x) proc (y) if x then y else 99 : no-type
+9. (proc (p) if p then 88 else 99
+    33) : no-type (p need to be a bool, but parameter is a int)
+10. (proc (p) if p then 88 else 99
+     proc (z) z) : no-type (p need to be a bool, but parameter is a proc)
+11. proc (f)
+     proc (g)
+      proc (p)
+       proc (x) if (p (f x)) then (g 1) else -((f x), 1)
+
+((t -> int) -> ((int -> t) -> ((int -> bool) -> (t -> t | int))))
+: no-type  because (g 1) 's type is t, but -((f x), 1) type is int
+
+12. proc (x)
+     proc (p)
+      proc (f)
+       if (p x) then -(x, 1) else (f p)
+(int -> ((int -> bool) -> (((int -> bool) -> t) -> int | t))
+: no-type because (f p) 's type is t, but -(x, 1) is int
+
+13. proc (f)
+     let d = proc (x)
+              proc (z) ((f (x x)) z)
+     in proc (n) ((f (d d)) n)
+
+; I don't know the type
+
+
+
