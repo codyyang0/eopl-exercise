@@ -1,1 +1,1 @@
-("7.4" racket ("f7e06f5ffe16a9163a4981a9c89a61ab523132c9" . "af2c7a68f4afdc97ff6aabeea7cb32eebe6ae412") #"E:\\codes\\eopl-exercise\\chapter5\\exercise5.3\\drscheme-init.scm" (collects #"eopl" #"eopl.rkt") (collects #"errortrace" #"errortrace-key.rkt"))
+("7.7" racket ("f048e102ca08a05fb86dee1b56f5f46568fbde3a" . "226bab3c8b25f24dfd77a06df032fcc4b065f245") #"/Users/cody/projects/eopl-exercise/chapter5/exercise5.3/drscheme-init.scm" (collects #"eopl" #"eopl.rkt") (collects #"errortrace" #"errortrace-key.rkt"))

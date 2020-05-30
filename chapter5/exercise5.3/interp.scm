@@ -67,7 +67,8 @@
 
         (let2-exp (var1 exp1 var2 exp2 body)
           (value-of/k exp1 env
-                      (let2-exp1-cont var1 var2 exp2 body env cont)))
+            (let2-1-cont var1 var2 exp2 body env cont)))
+          
    )))
 
   ;; apply-procedure/k : Proc * ExpVal * Cont -> FinalAnswer
@@ -140,19 +141,19 @@
       (lambda (val)
         (apply-procedure/k (expval->proc rator) val cont))))
 
-  ; let2-exp1-cont : var * var * Exp * Exp * Env * Cont -> Cont 
-  (define let2-exp1-cont
+  ; let2-1-cont : var * var * Exp * Exp * Env * Cont -> Cont 
+  (define let2-1-cont
     (lambda (var1 var2 exp2 body env cont)
-      (lambda (val)
+      (lambda (val1)
         (value-of/k exp2 env
-          (let2-exp2-cont var2 body (extend-env var1 val env) cont)))))
+          (let2-2-cont var2 body (extend-env var1 val1 env) cont)))))
 
   ; let2-exp2-cont : var * Exp * Env * Cont -> Cont
   ; Cont is not change
-  (define let2-exp2-cont
+  (define let2-2-cont
     (lambda (var2 body env cont)
-      (lambda (val)
-        (value-of/k body (extend-env var2 val env) cont))))
+      (lambda (val2)
+        (value-of/k body (extend-env var2 val2 env) cont))))
   )
   
 
